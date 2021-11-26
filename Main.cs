@@ -96,7 +96,7 @@ namespace AlessiaLIONETTO.GestioneImpiegati
             bool exist = Manage.CheckCf(cf);
             if (exist)
             {
-                foreach(Employee e in employees)
+                foreach(Employee e in employees) // NON VA!!!!!
                 {
                     if (cf == e.Code)
                     {
