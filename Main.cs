@@ -35,13 +35,17 @@ namespace AlessiaLIONETTO.GestioneImpiegati
                         AddEmployee();
                         break;
                     case '4':
-
+                        string cf = GetInfo("cf");
+                        RemoveEmployes(cf);
                         break;
                     case '5':
-
+                        Console.WriteLine("inserisci il salario");
+                        decimal salary=decimal.Parse(Console.ReadLine());
+                        FetchEmployeesBySalary(salary);
                         break;
                     case '6':
-
+                        string skill = GetInfo("skill");
+                        FetchEmployeesBySkill(skill);
                         break;
 
                     case 'Q':
@@ -51,6 +55,51 @@ namespace AlessiaLIONETTO.GestioneImpiegati
                         break;
                 }
             } while (scelta != 'Q');
+        }
+
+        private static void FetchEmployeesBySkill(string skill)
+        {
+            List<Employee> employees = Manage.FetchEmployees();
+            bool exist = Manage.CheckCode(skill);
+            if (exist)
+            {
+                foreach (Employee e in employees)
+                {
+                    e.PrintInfo();
+                }
+            }
+           
+        }
+
+        private static void FetchEmployeesBySalary(decimal salary)
+        {
+            List<Employee> employees = Manage.FetchEmployees();
+            
+            foreach (Employee e in employees)
+            {
+                decimal Esalary = e.GetSalary();
+                if (Esalary>= salary)
+                {
+                    e.PrintInfo();
+                }
+            }
+        }
+
+        private static void RemoveEmployes(string cf)
+        {
+            List<Employee> employees = Manage.FetchEmployees();
+            bool exist = Manage.CheckCf(cf);
+            if (exist)
+            {
+                foreach(Employee e in employees)
+                {
+                    employees.Remove(e);
+                }
+            }
+            else
+            {
+                Console.WriteLine($"non esiste un impiegato con questo codice fiscale {cf}");
+            }
         }
 
         private static void AddEmployee()
