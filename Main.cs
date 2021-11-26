@@ -64,14 +64,18 @@ namespace AlessiaLIONETTO.GestioneImpiegati
             bool exist = Manage.CheckCode(skill);
             if (exist)
             {
-                foreach (Skill s in skills)
+                foreach (Employee e in employees)
                 {
-                    if (skill == s.Codice)
+                    foreach (Skill s in skills)
                     {
-                        s.PrintInfo();
+                        if (skill == s.Codice)
+                        {
+                            e.PrintInfo();
+                        }
+
                     }
-                   
                 }
+                
             }
            
         }
