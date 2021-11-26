@@ -32,7 +32,7 @@ namespace AlessiaLIONETTO.GestioneImpiegati
                         FetchEmployeesBySector();
                         break;
                     case '3':
-
+                        AddEmployee();
                         break;
                     case '4':
 
@@ -51,6 +51,43 @@ namespace AlessiaLIONETTO.GestioneImpiegati
                         break;
                 }
             } while (scelta != 'Q');
+        }
+
+        private static void AddEmployee()
+        {
+            bool exit;
+            do
+            {
+                Console.WriteLine("che tipologia di impiegato vuoi aggiungere?" +
+                "\n[1] stagista" +
+                "\n[2] tecnico" +
+                "\n[3] manager");
+                int scelta=int.Parse(Console.ReadLine());
+                exit=true;
+                switch (scelta)
+                {
+                    case 1:
+                        string cf = GetInfo("cf");
+                        bool exist=Manage.CheckCf(cf);
+                        if (exist)
+                        {
+                            Console.WriteLine("questo impiegato è già presente");
+                        }
+                        else
+                        {
+                            string nome = GetInfo("nome");
+                            string cognome = GetInfo("cognome");
+                            
+                            string sector = GetInfo("settore");
+                            SectorEnum sectorEnum = Enum.Parse(typeof(SectorEnum), string sector);
+                        }
+                        break;
+
+                }
+
+            } while (!exit);
+
+
         }
 
         private static string GetInfo(string message)

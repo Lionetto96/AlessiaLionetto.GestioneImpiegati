@@ -34,7 +34,14 @@ namespace AlessiaLIONETTO.GestioneImpiegati
             }
             return null;
         }
-
+        internal static bool CheckCf(string cf)
+        {
+            foreach(Employee e in employees)
+            {
+                if (cf == e.Code)  return true; 
+            }
+            return false;
+        }
     
     }
 }
