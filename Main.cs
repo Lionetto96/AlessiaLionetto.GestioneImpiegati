@@ -36,7 +36,7 @@ namespace AlessiaLIONETTO.GestioneImpiegati
                         break;
                     case '4':
                         string cf = GetInfo("cf");
-                        RemoveEmployes(cf);
+                        //RemoveEmployes(cf);
                         break;
                     case '5':
                         Console.WriteLine("inserisci il salario");
@@ -45,7 +45,7 @@ namespace AlessiaLIONETTO.GestioneImpiegati
                         break;
                     case '6':
                         string skill = GetInfo("skill");
-                        FetchEmployeesBySkill(skill);
+                        //FetchEmployeesBySkill(skill);  MI STAMPA SOLO LE SKILL
                         break;
 
                     case 'Q':
@@ -57,28 +57,27 @@ namespace AlessiaLIONETTO.GestioneImpiegati
             } while (scelta != 'Q');
         }
 
-        private static void FetchEmployeesBySkill(string skill)
-        {
-            List<Skill> skills = Manage.FetchSkill();
-            List<Employee> employees = Manage.FetchEmployees();
-            bool exist = Manage.CheckCode(skill);
-            if (exist)
-            {
-                foreach (Employee e in employees)
-                {
-                    foreach (Skill s in skills)
-                    {
-                        if (skill == s.Codice)
-                        {
-                            e.PrintInfo();
-                        }
+        //private static void FetchEmployeesBySkill(string skill)
+        //{
+        //    List<Skill> skills = Manage.FetchSkill();
+        //    List<Employee> employees = Manage.FetchEmployees();
+        //    bool exist = Manage.CheckCode(skill);
+        //    if (exist)
+        //    {
 
-                    }
-                }
-                
-            }
+        //        foreach (Skill s in skills)
+        //        {
+        //            if (skill == s.Codice)
+        //            {
+        //                s.PrintInfo();
+        //            }
+
+        //        }
+
+
+        //    }
            
-        }
+        //}
 
         private static void FetchEmployeesBySalary(decimal salary)
         {
@@ -94,27 +93,27 @@ namespace AlessiaLIONETTO.GestioneImpiegati
             }
         }
 
-        private static void RemoveEmployes(string cf)
-        {
-            List<Employee> employees = Manage.FetchEmployees();
-            bool exist = Manage.CheckCf(cf);
-            if (exist)
-            {
-                foreach(Employee e in employees) // NON VA!!!!!
-                {
-                    if (cf == e.Code)
-                    {
-                        employees.Remove(e);
-                    }
-                }
+        //private static void RemoveEmployes(string cf)
+        //{
+        //    List<Employee> employees = Manage.FetchEmployees();
+        //    bool exist = Manage.CheckCf(cf);
+        //    if (exist)
+        //    {
+        //        foreach(Employee e in employees) // NON VA!!!!!
+        //        {
+        //            if (cf == e.Code)
+        //            {
+        //                employees.Remove(e);
+        //            }
+        //        }
                
 
-            }
-            else
-            {
-                Console.WriteLine($"non esiste un impiegato con questo codice fiscale {cf}");
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine($"non esiste un impiegato con questo codice fiscale {cf}");
+        //    }
+        //}
 
         private static void AddEmployee()
         {
