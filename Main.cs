@@ -77,9 +77,14 @@ namespace AlessiaLIONETTO.GestioneImpiegati
                         {
                             string nome = GetInfo("nome");
                             string cognome = GetInfo("cognome");
-                            
-                            string sector = GetInfo("settore");
-                            SectorEnum sectorEnum = Enum.Parse(typeof(SectorEnum), string sector);
+                            do
+                            {
+                                Console.WriteLine($"scegli settore:   {SectorEnum.Manutention} \n {SectorEnum.Administration} \n {SectorEnum.Development}");
+
+                                string sector = GetInfo("settore");
+                                SectorEnum sectorEnum = (SectorEnum)Enum.Parse(typeof(SectorEnum), sector);
+                            }
+                           
                         }
                         break;
 
