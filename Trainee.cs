@@ -12,6 +12,7 @@ namespace AlessiaLIONETTO.GestioneImpiegati
             : base(firstName, lastName, code, sector, skills)
         {
             InternshipDuration=internshipDuration;
+            
 
         }
 
@@ -20,6 +21,13 @@ namespace AlessiaLIONETTO.GestioneImpiegati
         {
             decimal salary = 600;
             return salary;
+        }
+
+        public override void PrintInfo()
+        {
+
+
+            Console.WriteLine($"{FirstName} {LastName} {Sector} {Skills} {GetSalary()} {InternshipDuration}");
         }
     }
 }

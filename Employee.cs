@@ -14,13 +14,14 @@ namespace AlessiaLIONETTO.GestioneImpiegati
 
         public abstract decimal GetSalary();
         
+        
 
         public Employee(string firstName, string lastName, string code,SectorEnum sector,List<Skill> skills)
             : base(firstName, lastName, code)
         {
             Sector = sector;
             Skills = skills;
-            //GetSalary = salary;
+            
 
 
 
@@ -30,16 +31,15 @@ namespace AlessiaLIONETTO.GestioneImpiegati
 
         public override void PrintInfo()
         {
-            //base.PrintInfo(); //usa l'implementazione di base
-            //Console.WriteLine($"{Role}");
+           
 
-            Console.WriteLine($"{FirstName} {LastName} {Sector} {Skills} ");
+            Console.WriteLine($"{FirstName} {LastName} {Sector} {Skills} {GetSalary()}");
         }
     }
 
     public enum SectorEnum
     {
-        Sales = 1,
+        Manutention = 1,
         Administration = 2,
         Development = 3
     }

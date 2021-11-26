@@ -23,5 +23,11 @@ namespace AlessiaLIONETTO.GestioneImpiegati
             decimal salary = HourlyWage * HoursWorked;
             return salary;
         }
+        public override void PrintInfo()
+        {
+
+
+            Console.WriteLine($"{FirstName} {LastName} {Sector} {Skills} {GetSalary()} {HourlyWage} {HoursWorked}");
+        }
     }
 }

@@ -1,5 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿
 //Entità:
 //L’impiegato deve essere inteso come una derivazione di Persona.
 

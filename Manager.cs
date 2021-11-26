@@ -13,6 +13,7 @@ namespace AlessiaLIONETTO.GestioneImpiegati
         {
             OvertimeHours = overtimeSalary;
             BasicSalary = basicSalary;
+            
         }
         public int OvertimeHours { get; set; }
         public decimal BasicSalary { get; set; }
@@ -20,6 +21,12 @@ namespace AlessiaLIONETTO.GestioneImpiegati
         {
             decimal salary = BasicSalary+(OvertimeHours*10);
             return salary;
+        }
+        public override void PrintInfo()
+        {
+
+
+            Console.WriteLine($"{FirstName} {LastName} {Sector} {Skills} {GetSalary()} {OvertimeHours} {BasicSalary}");
         }
 
     }
