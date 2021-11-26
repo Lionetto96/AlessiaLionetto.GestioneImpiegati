@@ -16,5 +16,10 @@ namespace AlessiaLIONETTO.GestioneImpiegati
             Codice = cod;
             Descrizione = descrizione;
         }
+
+        public virtual void PrintInfo()
+        {
+            Console.WriteLine($"{Codice} {Descrizione} ");
+        }
     }
 }

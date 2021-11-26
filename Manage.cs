@@ -42,6 +42,28 @@ namespace AlessiaLIONETTO.GestioneImpiegati
             }
             return false;
         }
-    
+
+        internal static List<Skill> FetchSkill()
+        {
+            return skills;
+        }
+
+        internal static bool CheckCode(string codice)
+        {
+           foreach(Skill s in skills)
+            {
+                if(codice==s.Codice) return true;
+            } return false; 
+        }
+        internal static bool AddNewEmployee(Employee newEmployee)
+        {
+            if (newEmployee != null)
+            {
+                employees.Add(newEmployee);
+                return true;
+            }
+
+            return false;
+        }
     }
 }
