@@ -27,7 +27,8 @@ namespace AlessiaLIONETTO.GestioneImpiegati
         {
 
 
-            Console.WriteLine($"{FirstName} {LastName} {Sector} {Skills} {GetSalary()} {InternshipDuration}");
+            Console.WriteLine($"{FirstName} {LastName} {Sector}  {GetSalary()} {InternshipDuration}");
+            foreach (Skill s in Skills) { s.PrintInfo(); }
         }
     }
 }

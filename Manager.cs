@@ -26,7 +26,8 @@ namespace AlessiaLIONETTO.GestioneImpiegati
         {
 
 
-            Console.WriteLine($"{FirstName} {LastName} {Sector} {Skills} {GetSalary()} {OvertimeHours} {BasicSalary}");
+            Console.WriteLine($"{FirstName} {LastName} {Sector} {GetSalary()} {OvertimeHours} {BasicSalary}");
+            foreach (Skill s in Skills) { s.PrintInfo(); }
         }
 
     }

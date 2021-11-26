@@ -55,6 +55,16 @@ namespace AlessiaLIONETTO.GestioneImpiegati
                 if(codice==s.Codice) return true;
             } return false; 
         }
+        internal static bool CheckCode(string codice,out Skill skill)
+        {
+            foreach (Skill s in skills)
+            {
+                if (codice == s.Codice) {
+                    skill = s; return true; }
+            }
+            skill = null; return false;
+            return false;
+        }
         internal static bool AddNewEmployee(Employee newEmployee)
         {
             if (newEmployee != null)
@@ -65,8 +75,16 @@ namespace AlessiaLIONETTO.GestioneImpiegati
 
             return false;
         }
+        internal static bool CheckSector(SectorEnum sector)
+        {
+            foreach (Employee e in employees)
+            {
+                if (sector ==e.Sector) return true;
+            }
+            return false;
+        }
 
-        
-       
+
+
     }
 }

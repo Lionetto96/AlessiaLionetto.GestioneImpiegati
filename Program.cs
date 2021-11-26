@@ -42,3 +42,7 @@
 //Inizializzare una lista di impiegati, con almeno un elemento
 //per ogni sottoclasse di impiegato e ognuno con almeno una skill
 //nella propria lista di skills.
+
+using AlessiaLIONETTO.GestioneImpiegati;
+
+Main.Start();

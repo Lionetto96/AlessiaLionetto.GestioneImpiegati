@@ -59,13 +59,18 @@ namespace AlessiaLIONETTO.GestioneImpiegati
 
         private static void FetchEmployeesBySkill(string skill)
         {
+            List<Skill> skills = Manage.FetchSkill();
             List<Employee> employees = Manage.FetchEmployees();
             bool exist = Manage.CheckCode(skill);
             if (exist)
             {
-                foreach (Employee e in employees)
+                foreach (Skill s in skills)
                 {
-                    e.PrintInfo();
+                    if (skill == s.Codice)
+                    {
+                        s.PrintInfo();
+                    }
+                   
                 }
             }
            
@@ -93,8 +98,13 @@ namespace AlessiaLIONETTO.GestioneImpiegati
             {
                 foreach(Employee e in employees)
                 {
-                    employees.Remove(e);
+                    if (cf == e.Code)
+                    {
+                        employees.Remove(e);
+                    }
                 }
+               
+
             }
             else
             {
@@ -136,7 +146,7 @@ namespace AlessiaLIONETTO.GestioneImpiegati
 
                                 sector = GetInfo("settore");
                                 
-                            } while (string.IsNullOrWhiteSpace(sector));
+                            } while (sector!="Manutention" && sector!="Development" && sector!="Administration");
                             SectorEnum sectorEnum = (SectorEnum)Enum.Parse(typeof(SectorEnum), sector);
                             int internshipDuration;
                             do
@@ -151,25 +161,24 @@ namespace AlessiaLIONETTO.GestioneImpiegati
                                 codice = Console.ReadLine().ToUpper();
                             } while (string.IsNullOrWhiteSpace(codice));
                             
-                            bool existCod = Manage.CheckCode(codice);
+                            bool existCod = Manage.CheckCode(codice,out Skill skill);
                             if (existCod)
                             {
-                                foreach (Skill s in skills)
+
+                                Employee newEmployee = new Trainee(name, lastName, cf, sectorEnum, new List<Skill>() { skill }, internshipDuration);
+                                bool isAdded = Manage.AddNewEmployee(newEmployee);
+                                if (isAdded)
                                 {
-                                    Employee newEmployee = new Trainee(name, lastName, cf, sectorEnum, new List<Skill>() { s }, internshipDuration);
-                                    bool isAdded = Manage.AddNewEmployee(newEmployee);
-                                    if (isAdded)
-                                    {
-                                        Console.WriteLine(" nuovo impiegato aggiunto  ");
-                                        newEmployee.PrintInfo();
-                                    }
-
-                                    else
-                                    {
-                                        Console.WriteLine("qualcosa è andato storto");
-                                    }
-
+                                    Console.WriteLine(" nuovo impiegato aggiunto  ");
+                                    newEmployee.PrintInfo();
                                 }
+
+                                else
+                                {
+                                    Console.WriteLine("qualcosa è andato storto");
+                                }
+
+
 
 
 
@@ -200,7 +209,7 @@ namespace AlessiaLIONETTO.GestioneImpiegati
 
                                 sector = GetInfo("settore");
 
-                            } while (string.IsNullOrWhiteSpace(sector));
+                            } while (sector != "Manutention" && sector != "Development" && sector != "Administration");
                             SectorEnum sectorEnum = (SectorEnum)Enum.Parse(typeof(SectorEnum), sector);
                             decimal hourlyWage;
                             
@@ -222,25 +231,24 @@ namespace AlessiaLIONETTO.GestioneImpiegati
                                 codice = Console.ReadLine().ToUpper();
                             } while (string.IsNullOrWhiteSpace(codice));
 
-                            bool existCod = Manage.CheckCode(codice);
+                            bool existCod = Manage.CheckCode(codice, out Skill skill);
                             if (existCod)
                             {
-                                foreach (Skill s in skills)
+
+                                Employee newEmployee = new Technical(name, lastName, cf1, sectorEnum, new List<Skill>() { skill }, hourlyWage, hoursWorked);
+                                bool isAdded = Manage.AddNewEmployee(newEmployee);
+                                if (isAdded)
                                 {
-                                    Employee newEmployee = new Technical(name, lastName, cf1, sectorEnum, new List<Skill>() { s }, hourlyWage,hoursWorked);
-                                    bool isAdded = Manage.AddNewEmployee(newEmployee);
-                                    if (isAdded)
-                                    {
-                                        Console.WriteLine(" nuovo impiegato aggiunto  ");
-                                        newEmployee.PrintInfo();
-                                    }
-
-                                    else
-                                    {
-                                        Console.WriteLine("qualcosa è andato storto");
-                                    }
-
+                                    Console.WriteLine(" nuovo impiegato aggiunto  ");
+                                    newEmployee.PrintInfo();
                                 }
+
+                                else
+                                {
+                                    Console.WriteLine("qualcosa è andato storto");
+                                }
+
+
 
 
 
@@ -272,7 +280,7 @@ namespace AlessiaLIONETTO.GestioneImpiegati
 
                                 sector = GetInfo("settore");
 
-                            } while (string.IsNullOrWhiteSpace(sector));
+                            } while (sector != "Manutention" && sector != "Development" && sector != "Administration");
                             SectorEnum sectorEnum = (SectorEnum)Enum.Parse(typeof(SectorEnum), sector);
                             int overtimeHours;
 
@@ -294,25 +302,24 @@ namespace AlessiaLIONETTO.GestioneImpiegati
                                 codice = Console.ReadLine().ToUpper();
                             } while (string.IsNullOrWhiteSpace(codice));
 
-                            bool existCod = Manage.CheckCode(codice);
+                            bool existCod = Manage.CheckCode(codice, out Skill skill);
                             if (existCod)
                             {
-                                foreach (Skill s in skills)
+
+                                Employee newEmployee = new Technical(name, lastName, cf2, sectorEnum, new List<Skill>() { skill }, overtimeHours, basicSalary);
+                                bool isAdded = Manage.AddNewEmployee(newEmployee);
+                                if (isAdded)
                                 {
-                                    Employee newEmployee = new Technical(name, lastName, cf2, sectorEnum, new List<Skill>() { s }, overtimeHours, basicSalary);
-                                    bool isAdded = Manage.AddNewEmployee(newEmployee);
-                                    if (isAdded)
-                                    {
-                                        Console.WriteLine(" nuovo impiegato aggiunto  ");
-                                        newEmployee.PrintInfo();
-                                    }
-
-                                    else
-                                    {
-                                        Console.WriteLine("qualcosa è andato storto");
-                                    }
-
+                                    Console.WriteLine(" nuovo impiegato aggiunto  ");
+                                    newEmployee.PrintInfo();
                                 }
+
+                                else
+                                {
+                                    Console.WriteLine("qualcosa è andato storto");
+                                }
+
+
 
 
 
@@ -344,7 +351,7 @@ namespace AlessiaLIONETTO.GestioneImpiegati
                 Console.WriteLine($"inserisci {message}");
                 info = Console.ReadLine();
 
-            } while (string.IsNullOrWhiteSpace(info));// POSSO AGGIUNGERE PER NON FAR INSERIRE UN INT|| !Regex.IsMatch(info, @"^[a-zA-Z]+$"));
+            } while (string.IsNullOrWhiteSpace(info));
             return info;
         }
 
@@ -354,14 +361,22 @@ namespace AlessiaLIONETTO.GestioneImpiegati
             SectorEnum sector;
             do
             {
-                Console.WriteLine("questi sono i settori, scegline uno: ");
+                Console.WriteLine($"questi sono i settori, scegline uno: {SectorEnum.Manutention} \n {SectorEnum.Administration} \n {SectorEnum.Development} ");
+
 
             } while (!Enum.TryParse(Console.ReadLine(), out sector));
-            foreach(Employee e in employees)
-            {
-                Employee employee = Manage.GetEmployeeBySector(sector);
-                e.PrintInfo();
+            bool exist = Manage.CheckSector(sector);
+            if (exist) {
+                foreach (Employee e in employees)
+                {
+                    if(e.Sector == sector)
+                    {
+                        e.PrintInfo();
+                    }
+                    
+                }
             }
+            
             
 
         }

@@ -32,8 +32,9 @@ namespace AlessiaLIONETTO.GestioneImpiegati
         public override void PrintInfo()
         {
            
-
-            Console.WriteLine($"{FirstName} {LastName} {Sector} {Skills} {GetSalary()}");
+           
+            Console.WriteLine($"{FirstName} {LastName} {Code} {Sector} {GetSalary()}");
+            foreach (Skill s in Skills) { s.PrintInfo(); }
         }
     }
 
